@@ -1,0 +1,25 @@
+// commande 1:
+//mongo --host 127.0.0.1:27042
+//sur mongoDB Compass utiliser la connection string : mongodb://127.0.0.1:27042/
+//commande pour utiliser une bdd, même commande pour créer une bdd:
+// use mern-pool
+// la bdd ne sera pas detectée avec "show dbs" tant qu'une premiere collection  n'y sera pas crée avec :
+//db.col1.insert( { "x":1 } ) avec col1 le nom  d'une collection, x et 1 des datas
+
+//ecrire dans le code app.js:
+
+
+// const MongoClient = require('mongodb').MongoClient;
+// const url = ' mongodb://127.0.0.1:27042/'
+// const dbName = 'mern-pool';
+//
+// MongoClient.connect(url, function(err, client) {
+//     if(err){
+//         console.log("Connection failed.")
+//     }else {
+//         console.log("Connection successfull.");
+//         const db = client.db(dbName);
+//         client.close();
+//     }
+// });
+

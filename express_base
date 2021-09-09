@@ -1,0 +1,48 @@
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const bodyParser = require("body-parser");
+
+
+const app = express();
+const port = process.env.PORT || 4242;
+
+
+const MongoClient = require('mongodb').MongoClient;
+
+const url = ' mongodb://127.0.0.1:27042/'
+const dbName = 'mern-pool';
+
+MongoClient.connect(url, function(err, client) {
+    if(err){
+        console.log("Connection failed.")
+    }else {
+        console.log("Connection successfull.");
+        const db = client.db(dbName);
+        client.close();
+    }
+});
+
+app.set('view engine', 'pug');
+
+
+
+app.use(morgan('combined'));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+// app.use(router); // Requests processing will be defined in the file router  //indique au code qu'il faut utiliser le fichier router pour les routes(pas utile actuellement
+
+app.get('/', (req, res) => {
+
+    res.send("youhou!");
+
+});
+
+
+app.listen(port, 'localhost', () => {
+    console.log('Server app listening on port ' + port);
+});
+

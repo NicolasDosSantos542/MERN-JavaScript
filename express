@@ -1,0 +1,73 @@
+//initialise le projet, crée le package.json -- -y passe les options
+>
+npm init -y
+npm install express --save
+touch app.js
+.
+.
+.
+..
+.
+.
+.
+..
+copier/coller ces lignes dans fichier "app.js"
+///////////////////////////////////////////////////////////
+
+const express = require("express");
+const app = express();
+const hostname = 'localhost';
+const port = 4242;
+
+
+
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////
+ces lignes suffisent a lancer le server avec "node app.js"
+
+ajouter la ligne suivante dans les script de package.json:
+
+$    "start": "node app.js"
+
+pour lancer le server avec webstorm
+
+pour créer des routes, on a besoin de la  constante express=require('express'), et la constante app=express(),
+la route s'écrit comme suit:
+app.get("/", function(req, res){
+le code a l'interieur
+}
+
+req sera l'objet requete qui permettra de recuperer des informations (req.params pour les parametres get, req.body pour le body....
+
+ res sera la reponse qui permettra d'envoyer ... ben des reponses avec res.send, res.sendFile, res.render ...
+pour envoyer un fichier html, ne pas oublier l'objet avec le chemin, ne pas oublier d'ecrirer le dossier avec ./
+    res.sendFile("test.html" , {root : "./views"})
+
+
+npm install cors morgan nodemon mongodb ejs  // installe les packges utiles (ejs pour les views)
+npm install mongoose  // pour une gestion plus poussée de la db
+
+app.set('view engine', 'ejs'); // on indique que le systeme de vues est ejs
+
+
+ajouter la ligne suivante dans les script de package.json:
+
+$    "start": "nodemon ex_5.js"
+
+
+aller dans /etc/mongod.conf modifier la ligne 
+// net:
+//     port: 27042
+// bindIp: 127.0.0.1
+//
+pour choisir le port.
+
+// Puis lancer mongo avec la commande:
+
+//mongo --host 127.0.0.1:27042
+
+//sur mongoDB Compass utiliser la connection string : mongodb://127.0.0.1:27042/
+
